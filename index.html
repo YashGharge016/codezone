@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Online Compiler</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>CodeZone</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="main-section">
+    <div class="editor-output-wrapper">
+      <!-- Left side: Editor Section -->
+      <div class="editor-container">
+        <div class="editor-header">
+          <label for="language-select">Choose Language:</label>
+          <select id="language-select">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+          </select>
+        </div>
+        <div class="editor-tools">
+          <select id="sampleSelect" aria-label="Load sample code">
+            <option value="">Load sample…</option>
+            <option value="js-hello">JavaScript: Hello World</option>
+            <option value="py-hello">Python: Hello World</option>
+            <option value="py-stdin">Python: Read stdin</option>
+            <option value="c-hello">C: Hello World</option>
+            <option value="c-stdin">C: Read stdin</option>
+            <option value="cpp-hello">C++: Hello World</option>
+          </select>
+          <div class="tool-buttons">
+            <button id="btnCopy" class="util-btn" title="Copy code">Copy</button>
+            <button id="btnClear" class="util-btn" title="Clear code">Clear</button>
+            <button id="btnDownload" class="util-btn" title="Download code">Download</button>
+          </div>
+        </div>
+        <textarea id="code" placeholder="Write your code here..."></textarea>
+        <div class="stdin-block">
+          <label for="stdin">Input (stdin):</label>
+          <textarea id="stdin" placeholder="Optional input passed to your program..."></textarea>
+        </div>
+        <button id="runButton" class="run-btn">Run Code</button>
+      </div>
+
+      <!-- Right side: Output Section -->
+      <div class="output-container">
+        <div class="output-header">
+          <label for="output">Output:</label>
+        </div>
+        <pre id="output"></pre>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <footer>
+    <div class="footer-top-glow"></div>
+    <p>© 2024 CodeZone - Your Online Coding Playground</p>
+    <div class="credits">
+      <div class="credit-box">
+        <h4>👨‍💻Developed By</h4>
+        <a href="https://www.linkedin.com/in/yash-gharge-063366278" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+          Yash Gharge
+        </a>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
