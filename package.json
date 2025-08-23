@@ -1,0 +1,26 @@
+{
+  "name": "codezone-online-compiler",
+  "version": "1.0.0",
+  "description": "Advanced Online Compiler with support for JavaScript, Python, C, and C++",
+  "main": "index.html",
+  "scripts": {
+    "dev": "cd server && npm run dev",
+    "start": "cd server && npm start",
+    "build": "echo 'No build step required for static files'",
+    "vercel-build": "echo 'Build completed'"
+  },
+  "keywords": [
+    "online-compiler",
+    "code-editor",
+    "javascript",
+    "python",
+    "c",
+    "cpp",
+    "judge0"
+  ],
+  "author": "Yash Gharge",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
