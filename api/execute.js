@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 // Map UI language values to Judge0 language IDs
 const LANGUAGE_MAP = {
@@ -25,7 +25,7 @@ function judge0Headers() {
   return { 'Content-Type': 'application/json' };
 }
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
