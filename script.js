@@ -111,20 +111,40 @@ document.getElementById('runButton').addEventListener('click', async () => {
   document.getElementById('output').textContent = 'Running...';
 
   try {
-      // Use environment variable or fallback to relative path
-      const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:5050/api/execute' : '/api/execute';
+      // Determine the correct API URL based on environment
+      let apiUrl;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          // Local development - use Express server
+          apiUrl = 'http://localhost:5050/api/execute';
+      } else {
+          // Production - use Vercel serverless function
+          apiUrl = '/api/execute';
+      }
+      
+      console.log('Calling API at:', apiUrl); // Debug log
       const resp = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ language, code, stdin })
       });
+      // Check if response is JSON
+      const contentType = resp.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+          throw new Error(`Expected JSON response but got ${contentType || 'unknown content type'}`);
+      }
+      
       const data = await resp.json();
       if (!resp.ok) {
-          throw new Error(data?.error || 'Execution failed');
+          throw new Error(data?.error || `HTTP ${resp.status}: Execution failed`);
       }
       document.getElementById('output').textContent = data.output || data.status || 'No Output';
   } catch (err) {
-      document.getElementById('output').textContent = err.message || 'Error running code';
+      console.error('Error details:', err);
+      if (err.message.includes('fetch')) {
+          document.getElementById('output').textContent = 'Network error: Make sure your server is running on localhost:5050';
+      } else {
+          document.getElementById('output').textContent = err.message || 'Error running code';
+      }
   }
 });
 // Remove matrix background
